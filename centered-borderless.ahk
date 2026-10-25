@@ -1,6 +1,8 @@
 #Requires AutoHotkey v2.0
 #SingleInstance Force
 
+#Include modules\window.ahk
+
 ; ------------------------
 ; === Global variables ===
 ; ------------------------
@@ -44,36 +46,17 @@ F1 & ESC:: ExitApp()
     ; Retrieve the current size of the active window client
     WinGetClientPos(, , &winCliW, &winCliH, targetHwnd)
 
-    ; Retrieve the desktop work area (excluding taskbar)
-    MonitorGetWorkArea(MonitorGetPrimary(), &left, &top, &right, &bottom)
-
-    workWidth := right - left
-    workHeight := bottom - top
-
-    ; Calculate centered position based on existing window dimensions
-    newX := Round(left + (workWidth - winCliW) / 2)
-    newY := Round(top + (workHeight - winCliH) / 2)
-
     ; Position at center and resize
-    WinMove(newX, newY, winCliW, winCliH, targetHwnd)
+    CenterWindow(targetHwnd, winCliW, winCliH)
 
     ; Remove the title bar and border
-    WinSetStyle("-0xC40000", targetHwnd)
+    SetWindowBorderless(targetHwnd, true)
 
     ; Redraw the window frame to apply style changes cleanly
     WinRedraw(targetHwnd)
 
-    ; Create a borderless, non-clickable black background
-    bgGui := Gui("-Caption +ToolWindow +Disabled")
-    bgGui.BackColor := "000000"
-
-    ; Cover the virtual screen (all monitors)
-    MonitorGet(MonitorGetPrimary(), &left, &top, &right, &bottom)
-    bgGui.Show(Format("x{} y{} w{} h{} NoActivate", left, top, right, bottom))
-
-    ; Place directly behind the target window in Z-order
-    ; 0x53 = SWP_NOSIZE | SWP_NOMOVE | SWP_NOACTIVATE | SWP_SHOWWINDOW
-    DllCall("SetWindowPos", "ptr", bgGui.Hwnd, "ptr", targetHwnd, "int", 0, "int", 0, "int", 0, "int", 0, "uint", 0x53)
+    ; Create a dark background
+    CreateBackground()
 
     isTracking := true
     isBackdropVisible := true
@@ -91,23 +74,10 @@ F1 & ESC:: ExitApp()
     if (isTracking)
     {
         ; Restore the title bar and border
-        WinSetStyle("+0xC40000", targetHwnd)
-
-        ; Retrieve the desktop work area (excluding taskbar)
-        MonitorGetWorkArea(MonitorGetPrimary(), &left, &top, &right, &bottom)
-
-        workWidth := right - left
-        workHeight := bottom - top
-
-        ; Calculate centered position based on stored window dimensions
-        newX := Round(left + (workWidth - targetHwndWidth) / 2)
-        newY := Round(top + (workHeight - targetHwndHeight) / 2)
+        SetWindowBorderless(targetHwnd, false)
 
         ; Position at center and resize
-        WinMove(newX, newY, targetHwndWidth, targetHwndHeight, targetHwnd)
-
-        ; Redraw the window frame to apply style changes cleanly
-        WinRedraw(targetHwnd)
+        CenterWindow(targetHwnd, targetHwndWidth, targetHwndHeight)
     }
 
     CleanupRuntime()
@@ -116,6 +86,23 @@ F1 & ESC:: ExitApp()
 ; -----------------
 ; === Functions ===
 ; -----------------
+
+CreateBackground()
+{
+    global bgGui, targetHwnd
+
+    ; Create a borderless, non-clickable black background
+    bgGui := Gui("-Caption +ToolWindow +Disabled")
+    bgGui.BackColor := "000000"
+
+    ; Cover the virtual screen (all monitors)
+    area := GetMonitorArea()
+    bgGui.Show(Format("x{} y{} w{} h{} NoActivate", area.x, area.y, area.w, area.h))
+
+    ; Place directly behind the target window in Z-order
+    ; 0x53 = SWP_NOSIZE | SWP_NOMOVE | SWP_NOACTIVATE | SWP_SHOWWINDOW
+    DllCall("SetWindowPos", "ptr", bgGui.Hwnd, "ptr", targetHwnd, "int", 0, "int", 0, "int", 0, "int", 0, "uint", 0x53)
+}
 
 MonitorWindow()
 {
