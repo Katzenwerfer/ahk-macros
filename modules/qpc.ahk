@@ -9,11 +9,11 @@ class QPC
 
     static MsToCounts(ms)
     {
-        return Floor(ms * QPC.frequency / 1000)
+        return Floor(ms * this.frequency / 1000)
     }
 
     static CountsToMs(counts)
     {
-        return counts * 1000 / QPC.frequency
+        return counts * 1000 / this.frequency
     }
 }

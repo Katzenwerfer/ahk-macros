@@ -11,9 +11,9 @@ class TimerResolution
     static Set(ms)
     {
         DesiredTime := Floor(ms * 10000)
-        if (DesiredTime < TimerResolution.MinimumTime)
+        if (DesiredTime < this.MinimumTime)
         {
-            DesiredTime := TimerResolution.MinimumTime
+            DesiredTime := this.MinimumTime
         }
         SetResolution := true
         ActualTime := 0

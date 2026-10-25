@@ -2,7 +2,7 @@ class Stats
 {
     static Average(arr)
     {
-        if (arr.Length == 0)
+        if (arr.Length = 0)
         {
             return 0
         }
@@ -16,7 +16,7 @@ class Stats
 
     static Maximum(arr)
     {
-        if (arr.Length == 0)
+        if (arr.Length = 0)
         {
             return ""
         }
@@ -33,7 +33,7 @@ class Stats
 
     static Minimum(arr)
     {
-        if (arr.Length == 0)
+        if (arr.Length = 0)
         {
             return ""
         }
