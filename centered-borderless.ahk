@@ -47,13 +47,10 @@ F1 & ESC:: ExitApp()
     WinGetClientPos(, , &winCliW, &winCliH, targetHwnd)
 
     ; Position at center and resize
-    CenterWindow(targetHwnd, winCliW, winCliH)
+    Window.CenterWindow(targetHwnd, winCliW, winCliH)
 
     ; Remove the title bar and border
-    SetWindowBorderless(targetHwnd, true)
-
-    ; Redraw the window frame to apply style changes cleanly
-    WinRedraw(targetHwnd)
+    Window.SetWindowBorderless(targetHwnd, true)
 
     ; Create a dark background
     CreateBackground()
@@ -74,10 +71,10 @@ F1 & ESC:: ExitApp()
     if (isTracking)
     {
         ; Restore the title bar and border
-        SetWindowBorderless(targetHwnd, false)
+        Window.SetWindowBorderless(targetHwnd, false)
 
         ; Position at center and resize
-        CenterWindow(targetHwnd, targetHwndWidth, targetHwndHeight)
+        Window.CenterWindow(targetHwnd, targetHwndWidth, targetHwndHeight)
     }
 
     CleanupRuntime()
@@ -96,7 +93,7 @@ CreateBackground()
     bgGui.BackColor := "000000"
 
     ; Cover the virtual screen (all monitors)
-    area := GetMonitorArea()
+    area := Window.GetMonitorArea()
     bgGui.Show(Format("x{} y{} w{} h{} NoActivate", area.x, area.y, area.w, area.h))
 
     ; Place directly behind the target window in Z-order
