@@ -56,10 +56,24 @@ class Window
     }
 
     ; Position at the center of the work area
-    static CenterWindow(hwnd, customSize := [])
+    static CenterWindow(hwnd, customSize := [], monitorArea := false, clientArea := false)
     {
-        bounds := Window.GetWorkArea()
-        size := Window.GetWindowArea(hwnd)
+        if (monitorArea)
+        {
+            bounds := Window.GetMonitorArea()
+        }
+        else
+        {
+            bounds := Window.GetWorkArea()
+        }
+        if (clientArea)
+        {
+            size := Window.GetClientArea(hwnd)
+        }
+        else
+        {
+            size := Window.GetWindowArea(hwnd)
+        }
         if (customSize.Length)
         {
             size.w := customSize[1]
