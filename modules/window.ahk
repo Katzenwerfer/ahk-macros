@@ -56,12 +56,18 @@ class Window
     }
 
     ; Position at the center of the work area
-    static CenterWindow(hwnd, hwndWidth, hwndHeight)
+    static CenterWindow(hwnd, customSize := [])
     {
         bounds := Window.GetWorkArea()
-        x := Round(bounds.x + (bounds.w - hwndWidth) / 2)
-        y := Round(bounds.y + (bounds.h - hwndHeight) / 2)
-        WinMove(x, y, hwndWidth, hwndHeight, hwnd)
+        size := Window.GetWindowArea(hwnd)
+        if (customSize.Length)
+        {
+            size.w := customSize[1]
+            size.h := customSize[2]
+        }
+        x := Round(bounds.x + (bounds.w - size.w) / 2)
+        y := Round(bounds.y + (bounds.h - size.h) / 2)
+        WinMove(x, y, size.w, size.h, hwnd)
         WinRedraw(hwnd)
     }
 }

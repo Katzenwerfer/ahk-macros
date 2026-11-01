@@ -45,11 +45,13 @@ F1 & ESC:: ExitApp()
     ; For aspect-ratio scaling: Area = W * H.
     ; Therefore, linear scale = Sqrt(AreaPercent / 100)
     scale := Sqrt(AreaPercent / 100)
-    newW := Round(area.w * scale)
-    newH := Round(area.h * scale)
+    size := [
+        Round(area.w * scale),
+        Round(area.h * scale)
+    ]
 
     ; Move and resize the window
-    Window.CenterWindow(hwnd, newW, newH)
+    Window.CenterWindow(hwnd, size)
 }
 
 ; Hotkey 2: Ctrl + Alt + C (Center Only)
@@ -67,8 +69,5 @@ F1 & ESC:: ExitApp()
         WinRestore(hwnd)
     }
 
-    ; Retrieve the current size of the active window
-    hwndArea := Window.GetWindowArea(hwnd)
-
-    Window.CenterWindow(hwnd, hwndArea.w, hwndArea.h)
+    Window.CenterWindow(hwnd)
 }
