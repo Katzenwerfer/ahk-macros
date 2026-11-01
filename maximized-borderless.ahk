@@ -65,7 +65,7 @@ F1 & ESC:: ExitApp()
         ; Restore the title bar and border
         Window.SetWindowBorderless(targetHwnd, false)
         ; Position at center
-        Window.CenterWindow(targetHwnd, targetHwndWidth, targetHwndHeight)
+        Window.CenterWindow(targetHwnd, [targetHwndWidth, targetHwndHeight])
     }
 
     ; Cleanup global variables

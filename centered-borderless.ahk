@@ -52,7 +52,7 @@ F1 & ESC:: ExitApp()
     WinGetClientPos(, , &winCliW, &winCliH, targetHwnd)
 
     ; Position at center and resize
-    Window.CenterWindow(targetHwnd, winCliW, winCliH)
+    Window.CenterWindow(targetHwnd, [winCliW, winCliH])
 
     ; Remove the title bar and border
     Window.SetWindowBorderless(targetHwnd, true)
@@ -77,7 +77,7 @@ F1 & ESC:: ExitApp()
         Window.SetWindowBorderless(targetHwnd, false)
 
         ; Position at center and resize
-        Window.CenterWindow(targetHwnd, targetHwndWidth, targetHwndHeight)
+        Window.CenterWindow(targetHwnd, [targetHwndWidth, targetHwndHeight])
     }
 
     CleanupRuntime()
