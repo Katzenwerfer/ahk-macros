@@ -48,11 +48,8 @@ F1 & ESC:: ExitApp()
     ; Retrieve the current size of the active window
     WinGetPos(, , &targetHwndWidth, &targetHwndHeight, targetHwnd)
 
-    ; Retrieve the current size of the active window client
-    WinGetClientPos(, , &winCliW, &winCliH, targetHwnd)
-
-    ; Position at center and resize
-    Window.CenterWindow(targetHwnd, [winCliW, winCliH])
+    ; Position at center and resize to client area
+    Window.CenterWindow(targetHwnd, , , true)
 
     ; Remove the title bar and border
     Window.SetWindowBorderless(targetHwnd, true)
