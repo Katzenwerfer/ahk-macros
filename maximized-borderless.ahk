@@ -38,6 +38,12 @@ F1 & ESC:: ExitApp()
         return
     }
 
+    ; If the window is maximized or minimized, restore it first
+    if WinGetMinMax(targetHwnd)
+    {
+        WinRestore(targetHwnd)
+    }
+
     ; Retrieve the current size of the active window
     WinGetPos(, , &targetHwndWidth, &targetHwndHeight, targetHwnd)
 
