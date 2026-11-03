@@ -92,3 +92,10 @@ F1 & ESC:: ExitApp()
   ```
 * **Hotkeys**: Do not remap essential Windows system keys or overwrite existing application key bindings without explicit instruction.
 * **Process Spawning**: Avoid spawning persistent background AHK processes during unattended agent runs unless specifically requested. If testing a script, prefer scripts that exit automatically or provide explicit termination logic.
+
+---
+
+## 6. Official Documentation & Reference
+
+* **Offline Manual**: The complete official AutoHotkey v2 documentation is available locally at [`docs/AutoHotkey.pdf`](docs/AutoHotkey.pdf).
+* **Reference Directive**: Whenever you are uncertain about AutoHotkey v2 language built-ins, standard library methods, object/Gui models, or Win32 interop specifics, consult [`docs/AutoHotkey.pdf`](docs/AutoHotkey.pdf) rather than guessing or assuming legacy v1 conventions.

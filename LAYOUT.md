@@ -38,7 +38,7 @@ This document tracks the layout and file manifest of the repository. It must be 
 │   └── walk.ahk                  # Continuous auto-walk / sprint toggle
 │
 ├── docs/                         # Reference documentation
-│   └── AutoHotkey.pdf            # AutoHotkey v2 offline reference
+│   └── AutoHotkey.pdf            # Official AutoHotkey v2 offline reference manual
 │
 └── temp/                         # Ephemeral scripts and scratch experiments (git-ignored)
 ```
@@ -67,6 +67,9 @@ This document tracks the layout and file manifest of the repository. It must be 
 
 ### 4. Game Automation (`vidya/`)
 * Automation macros with key bindings for gaming actions (e.g., charge weapons, rapid fire, and movement toggles).
+
+### 5. Documentation (`docs/`)
+* **[`docs/AutoHotkey.pdf`](docs/AutoHotkey.pdf)**: Complete offline documentation for AutoHotkey v2. Serves as the primary reference manual for agents inspecting syntax, object methods, and built-ins.
 
 ---
 
