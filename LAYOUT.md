@@ -24,6 +24,9 @@ This document tracks the layout and file manifest of the repository. It must be 
 │   ├── wait.ahk                  # Precise wait routines using Sleep(-1) yield
 │   └── window.ahk                # Window geometry, monitor bounds, and borderless styling
 │
+├── scripts/                      # Developer and agent tooling scripts
+│   └── Test-AhkSyntax.ps1        # Syntax validation script invoking AutoHotkey v2 /validate
+│
 ├── testing/                      # Test suites and precision benchmarks
 │   └── wait/                     # Sleep accuracy and timing jitter benchmarks
 │       ├── busy_wait.ahk         # Sleep(0) busy loop precision benchmark
@@ -62,13 +65,16 @@ This document tracks the layout and file manifest of the repository. It must be 
 * **[`csleep.ahk`](modules/csleep.ahk)**: Custom sleep routine for high accuracy delays.
 * **[`hsleep.ahk`](modules/hsleep.ahk)**: Hybrid sleep combining coarse OS sleep with fine spin-wait.
 
-### 3. Testing (`testing/`)
+### 3. Scripts (`scripts/`)
+* **[`scripts/Test-AhkSyntax.ps1`](scripts/Test-AhkSyntax.ps1)**: Automation script that locates the local AutoHotkey v2 executable and validates syntax across all `.ahk` files in the repository (or a single target file passed via `-Path`) using `/validate`. Exits with code 0 on success or 1 on failure.
+
+### 4. Testing (`testing/`)
 * **[`testing/wait/`](testing/wait/)**: Scripts evaluating sleep accuracy, overhead, and jitter across Windows scheduler slices. Each script runs repeated iterations and outputs summary statistics in a `MsgBox`.
 
-### 4. Game Automation (`vidya/`)
+### 5. Game Automation (`vidya/`)
 * Automation macros with key bindings for gaming actions (e.g., charge weapons, rapid fire, and movement toggles).
 
-### 5. Documentation (`docs/`)
+### 6. Documentation (`docs/`)
 * **[`docs/AutoHotkey.pdf`](docs/AutoHotkey.pdf)**: Complete offline documentation for AutoHotkey v2. Serves as the primary reference manual for agents inspecting syntax, object methods, and built-ins.
 
 ---
