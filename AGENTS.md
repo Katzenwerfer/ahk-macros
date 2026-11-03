@@ -86,7 +86,15 @@ F1 & ESC:: ExitApp()
 
 ## 5. Development & Testing Safety
 
-* **Verification**: Whenever editing AHK files, check for syntax errors before running. AutoHotkey v2 can validate syntax without executing GUI hooks using:
+* **Verification**: Whenever editing or adding AHK files, check for syntax errors before finishing your task. Use the workspace validation helper script:
+  ```powershell
+  # Validate all workspace scripts:
+  pwsh scripts/Test-AhkSyntax.ps1
+
+  # Or validate a specific script:
+  pwsh scripts/Test-AhkSyntax.ps1 -Path "centered-borderless.ahk"
+  ```
+  Alternatively, you can call AutoHotkey directly:
   ```powershell
   & "$env:LOCALAPPDATA\Programs\AutoHotkey\v2\AutoHotkey64.exe" /validate "<script-path>.ahk"
   ```
