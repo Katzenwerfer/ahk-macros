@@ -17,33 +17,11 @@ This repository contains custom automation scripts, window management utilities,
 
 ---
 
-## 2. Repository Layout
+## 2. Repository Layout & Manifest
 
-```
-.
-├── centered-borderless.ahk   # Window utility: centers active window with dark backdrop
-├── maximized-borderless.ahk  # Window utility: maximizes active window borderless
-├── resize-center.ahk         # Window utility: resizes active window to preset size & centers
-├── modules/                  # Reusable library modules and classes
-│   ├── window.ahk            # Window geometry & style helpers (Window class)
-│   ├── qpc.ahk               # QueryPerformanceCounter precision timing
-│   ├── stopwatch.ahk         # Stopwatch timer class
-│   ├── timer.ahk             # High-precision timer wrappers (NtDelayExecution, etc.)
-│   ├── stats.ahk             # Statistical calculations (Avg, Min, Max, etc.)
-│   └── csleep.ahk / hsleep.ahk # Custom/hybrid sleep algorithms
-├── testing/                  # Benchmark and measurement scripts
-│   └── wait/                 # Sleep accuracy & jitter tests
-│       ├── busy_wait.ahk
-│       ├── custom_sleep.ahk
-│       ├── heuristic_hybrid_sleep.ahk
-│       └── hybrid_sleep.ahk
-├── vidya/                    # Game-specific automation and macros
-│   ├── arc.ahk
-│   ├── fire.ahk
-│   ├── rail.ahk
-│   └── walk.ahk
-└── temp/                     # Ephemeral experiments (git-ignored)
-```
+* **Manifest File**: The full repository directory tree, file purposes, and component descriptions are maintained in [`LAYOUT.md`](LAYOUT.md).
+* **Maintenance Requirement**: Whenever you add, delete, rename, or reorganize files in this repository, you **must** update [`LAYOUT.md`](LAYOUT.md) to keep it synchronized.
+* **Lightweight Delegation**: Updating [`LAYOUT.md`](LAYOUT.md) can be handled directly or delegated to a lightweight subagent.
 
 ---
 
