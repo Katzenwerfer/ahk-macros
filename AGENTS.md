@@ -98,6 +98,7 @@ F1 & ESC:: ExitApp()
   ```powershell
   & "$env:LOCALAPPDATA\Programs\AutoHotkey\v2\AutoHotkey64.exe" /validate "<script-path>.ahk"
   ```
+* **Sandbox & Execution Permission**: `AutoHotkey64.exe` is installed under `$env:LOCALAPPDATA`. In sandboxed agent environments, running external binaries from user profile directories triggers `{Illegal System DLL Relocation}` due to Windows process isolation. When executing `Test-AhkSyntax.ps1` or `AutoHotkey64.exe`, agents must run outside the sandbox (e.g., using `BypassSandbox: true`).
 * **Hotkeys**: Do not remap essential Windows system keys or overwrite existing application key bindings without explicit instruction.
 * **Process Spawning**: Avoid spawning persistent background AHK processes during unattended agent runs unless specifically requested. If testing a script, prefer scripts that exit automatically or provide explicit termination logic.
 
