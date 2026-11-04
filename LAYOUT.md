@@ -10,6 +10,7 @@ This document tracks the layout and file manifest of the repository. It must be 
 .
 ├── AGENTS.md                     # Agent system instructions, conventions & standards
 ├── LAYOUT.md                     # Workspace file manifest & directory structure (this file)
+├── auto-center.ahk               # Utility: automatically centers windows when brought to foreground
 ├── centered-borderless.ahk       # Utility: centers active window with a dark backdrop
 ├── maximized-borderless.ahk      # Utility: maximizes active window borderless
 ├── resize-center.ahk             # Utility: resizes active window to preset size & centers
@@ -28,11 +29,13 @@ This document tracks the layout and file manifest of the repository. It must be 
 │   └── Test-AhkSyntax.ps1        # Syntax validation script invoking AutoHotkey v2 /validate
 │
 ├── testing/                      # Test suites and precision benchmarks
-│   └── wait/                     # Sleep accuracy and timing jitter benchmarks
-│       ├── busy_wait.ahk         # Sleep(0) busy loop precision benchmark
-│       ├── custom_sleep.ahk      # CSleep accuracy & jitter benchmark
-│       ├── heuristic_hybrid_sleep.ahk # Adaptive heuristic hybrid sleep test
-│       └── hybrid_sleep.ahk      # Standard hybrid sleep accuracy benchmark
+│   ├── wait/                     # Sleep accuracy and timing jitter benchmarks
+│   │   ├── busy_wait.ahk         # Sleep(0) busy loop precision benchmark
+│   │   ├── custom_sleep.ahk      # CSleep accuracy & jitter benchmark
+│   │   ├── heuristic_hybrid_sleep.ahk # Adaptive heuristic hybrid sleep test
+│   │   └── hybrid_sleep.ahk      # Standard hybrid sleep accuracy benchmark
+│   └── window/                   # Window event diagnostics and monitoring
+│       └── foreground_monitor.ahk # Records foreground window changes and exports to CSV
 │
 ├── vidya/                        # Game-specific automation scripts and macros
 │   ├── arc.ahk                   # Arc thrower weapon timing automation
@@ -51,6 +54,7 @@ This document tracks the layout and file manifest of the repository. It must be 
 ## Detailed Component Directory
 
 ### 1. Root Utilities (Window Management)
+* **[`auto-center.ahk`](auto-center.ahk)**: Registers a WinEvent hook (`EVENT_SYSTEM_FOREGROUND`) to automatically center windows on the screen when they become the foreground window.
 * **[`centered-borderless.ahk`](centered-borderless.ahk)**: Strips window borders and title bars, centers the target window on the primary monitor, and draws a black backdrop GUI behind it.
 * **[`maximized-borderless.ahk`](maximized-borderless.ahk)**: Strips decorations and maximizes the target window to cover the full primary monitor.
 * **[`resize-center.ahk`](resize-center.ahk)**: Resizes the active window to specified dimensions (default: 1920x1080) and centers it.
@@ -70,6 +74,7 @@ This document tracks the layout and file manifest of the repository. It must be 
 
 ### 4. Testing (`testing/`)
 * **[`testing/wait/`](testing/wait/)**: Scripts evaluating sleep accuracy, overhead, and jitter across Windows scheduler slices. Each script runs repeated iterations and outputs summary statistics in a `MsgBox`.
+* **[`testing/window/`](testing/window/)**: Scripts and logs for monitoring and evaluating window events and focus changes (e.g., tracking foreground window switches via WinEvent hooks and logging to CSV).
 
 ### 5. Game Automation (`vidya/`)
 * Automation macros with key bindings for gaming actions (e.g., charge weapons, rapid fire, and movement toggles).

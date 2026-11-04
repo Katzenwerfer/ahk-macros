@@ -2,3 +2,5 @@
 
 docs/
 temp/
+
+*.csv
