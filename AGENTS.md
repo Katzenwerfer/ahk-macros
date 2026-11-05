@@ -106,5 +106,8 @@ F1 & ESC:: ExitApp()
 
 ## 6. Official Documentation & Reference
 
-* **Offline Manual**: The complete official AutoHotkey v2 documentation is available locally at [`docs/AutoHotkey.pdf`](docs/AutoHotkey.pdf).
+* **Offline Manual**: The complete official AutoHotkey v2 documentation is available locally at [`docs/AutoHotkey.pdf`](docs/AutoHotkey.pdf) (1,300+ pages).
 * **Reference Directive**: Whenever you are uncertain about AutoHotkey v2 language built-ins, standard library methods, object/Gui models, or Win32 interop specifics, consult [`docs/AutoHotkey.pdf`](docs/AutoHotkey.pdf) rather than guessing or assuming legacy v1 conventions.
+* **Querying with `pdf-mcp`**: Because the PDF is over 1,300 pages (~1M tokens), **do not** read the whole document in one chunk. Use the installed `pdf-mcp` tools:
+  1. **Search**: Call `pdf_search` (via `call_mcp_tool`) with `query` and `path: "docs/AutoHotkey.pdf"` to locate relevant page numbers and paragraph snippets.
+  2. **Read Pages**: Call `pdf_read_pages` specifying only the target page(s) (e.g. `pages: "410"`).
