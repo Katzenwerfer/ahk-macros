@@ -19,9 +19,9 @@ This repository contains custom automation scripts, window management utilities,
 
 ## 2. Repository Layout & Manifest
 
-* **Manifest File**: The full repository directory tree, file purposes, and component descriptions are maintained in [`LAYOUT.md`](LAYOUT.md).
-* **Maintenance Requirement**: Whenever you add, delete, rename, or reorganize files in this repository, you **must** update [`LAYOUT.md`](LAYOUT.md) to keep it synchronized.
-* **Lightweight Delegation**: Updating [`LAYOUT.md`](LAYOUT.md) can be handled directly or delegated to a lightweight subagent.
+* **Manifest File**: The full repository directory tree, file purposes, and component descriptions are maintained in [`.agents/LAYOUT.md`](.agents/LAYOUT.md).
+* **Maintenance Requirement**: Whenever you add, delete, rename, or reorganize files in this repository, you **must** update [`.agents/LAYOUT.md`](.agents/LAYOUT.md) to keep it synchronized.
+* **Lightweight Delegation**: Updating [`.agents/LAYOUT.md`](.agents/LAYOUT.md) can be handled directly or delegated to a lightweight subagent.
 
 ---
 
