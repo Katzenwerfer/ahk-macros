@@ -51,7 +51,7 @@ F1 & ESC:: ExitApp()
 
     ; Position at top-left and resize
     area := Window.GetWorkArea()
-    WinMove(0, 0, area.w, area.h, targetHwnd)
+    try WinMove(0, 0, area.w, area.h, targetHwnd)
 }
 
 ; Hotkey: Press Shift + F12 to restore the original title bar

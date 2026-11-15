@@ -79,7 +79,7 @@ class Window
     ; Remove the title bar and border
     static SetWindowBorderless(hwnd, borderless := true)
     {
-        WinSetStyle((borderless ? "-" : "+") . "0xC40000", hwnd)
+        try WinSetStyle((borderless ? "-" : "+") . "0xC40000", hwnd)
         WinRedraw(hwnd)
     }
 
@@ -109,7 +109,7 @@ class Window
         }
         x := Round(bounds.x + (bounds.w - size.w) / 2)
         y := Round(bounds.y + (bounds.h - size.h) / 2)
-        WinMove(x, y, size.w, size.h, hwnd)
+        try WinMove(x, y, size.w, size.h, hwnd)
         WinRedraw(hwnd)
     }
 }
