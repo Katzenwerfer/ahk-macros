@@ -142,7 +142,7 @@ OnForegroundChange(a, b, hwnd, *)
     }
 
     ; 2. Ignore invalid HWNDs and events from the backdrop itself
-    if (!hwnd || hwnd = bgGui.Hwnd)
+    if (!hwnd || hwnd = bgGui.Hwnd || Window.IsBlacklistedClass(hwnd))
     {
         return
     }
