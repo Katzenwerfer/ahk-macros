@@ -1,7 +1,7 @@
 ﻿#Requires AutoHotkey v2.0
 #SingleInstance Force
 
-#Include modules\window.ahk
+#Include ..\..\modules\window.ahk
 
 ; ---------------------
 ; === Configuration ===

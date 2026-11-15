@@ -1,7 +1,7 @@
 #Requires AutoHotkey v2.0
 #SingleInstance Force
 
-#Include ..\modules\qpc.ahk
+#Include ..\..\modules\qpc.ahk
 
 ; ---------------------
 ; === Configuration ===

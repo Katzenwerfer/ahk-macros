@@ -1,8 +1,8 @@
 #Requires AutoHotkey v2.0
 #SingleInstance Force
 
-#Include ..\modules\qpc.ahk
-#include ..\modules\wait.ahk
+#Include ..\..\modules\qpc.ahk
+#include ..\..\modules\wait.ahk
 
 ; ---------------------
 ; === Configuration ===
