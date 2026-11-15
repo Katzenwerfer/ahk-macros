@@ -1,5 +1,33 @@
 class Window
 {
+    ; Blacklisted window classes
+    static BlacklistedClasses := [
+        "ForegroundStaging",
+        "Shell_TrayWnd",
+        "TopLevelWindowForOverflowXamlIsland",
+        "Windows.UI.Core.CoreWindow",
+        "XamlExplorerHostIslandWindow"
+    ]
+
+    ; Check if an hwnd should be ignored based on class
+    static IsBlacklistedClass(hwnd)
+    {
+        if (!WinExist(hwnd))
+        {
+            return true
+        }
+
+        winClass := WinGetClass(hwnd)
+        for item in this.BlacklistedClasses
+        {
+            if (winClass = item)
+            {
+                return true
+            }
+        }
+        return false
+    }
+
     ; Retrieve the monitor area
     static GetMonitorArea()
     {
