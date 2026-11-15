@@ -17,11 +17,19 @@ This repository contains custom automation scripts, window management utilities,
 
 ---
 
-## 2. Repository Layout & Manifest
+## 2. Repository Layout
 
-* **Manifest File**: The full repository directory tree, file purposes, and component descriptions are maintained in [`.agents/LAYOUT.md`](.agents/LAYOUT.md).
-* **Maintenance Requirement**: Whenever you add, delete, rename, or reorganize files in this repository, you **must** update [`.agents/LAYOUT.md`](.agents/LAYOUT.md) to keep it synchronized.
-* **Lightweight Delegation**: Updating [`.agents/LAYOUT.md`](.agents/LAYOUT.md) can be handled directly or delegated to a lightweight subagent.
+| Path | Purpose |
+| :--- | :--- |
+| `.agents/` | Agent rules (`AGENTS.md`) and MCP configuration (`mcp_config.json`). |
+| `docs/` | Offline reference documentation (git-ignored). |
+| `modules/` | Reusable library classes and helper functions. |
+| `scripts/` | Developer and agent tooling scripts. |
+| `src/` | Standalone AutoHotkey v2 scripts, organized by category. |
+| `temp/` | Ephemeral experiments and scratch scripts (git-ignored). |
+| `testing/` | Benchmarks, accuracy tests, and diagnostic scripts. |
+
+* **Maintenance Requirement**: Update this table whenever top-level directories or their roles are added, removed, or changed.
 
 ---
 
