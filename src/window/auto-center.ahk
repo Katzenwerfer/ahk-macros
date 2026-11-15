@@ -3,6 +3,13 @@
 
 #Include ..\..\modules\window.ahk
 
+; ------------------------
+; === Global variables ===
+; ------------------------
+
+; Array of window classes to filter out (ignore when centering)
+filteredClasses := []
+
 ; ---------------------
 ; === Configuration ===
 ; ---------------------
@@ -41,9 +48,23 @@ F1 & ESC:: ExitApp()
 
 OnForegroundChange(a, b, hwnd, *)
 {
+    global filteredClasses
+
     ; Filter out invalid HWNDs and minimized/maximized windows
-    if (WinExist(hwnd) && !WinGetMinMax(hwnd))
+    if (!WinExist(hwnd) || WinGetMinMax(hwnd))
     {
-        Window.CenterWindow(hwnd)
+        return
     }
+
+    ; Filter out windows by class
+    winClass := WinGetClass(hwnd)
+    for filterClass in filteredClasses
+    {
+        if (winClass = filterClass)
+        {
+            return
+        }
+    }
+
+    Window.CenterWindow(hwnd)
 }
