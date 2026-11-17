@@ -25,10 +25,14 @@ F1 & ESC:: ExitApp()
 {
     global targetHwnd, targetHwndWidth, targetHwndHeight
 
-    ; Skip if already tracking
-    if (targetHwnd != 0)
+    ; Skip if already tracking an active window; reset if closed
+    if (targetHwnd)
     {
-        return
+        if (WinExist(targetHwnd))
+        {
+            return
+        }
+        CleanupRuntime()
     }
 
     ; Target the active window ("A")
@@ -59,6 +63,11 @@ F1 & ESC:: ExitApp()
 {
     global targetHwnd, targetHwndWidth, targetHwndHeight
 
+    if (!targetHwnd)
+    {
+        return
+    }
+
     ; Restore only if target windows exists
     if (WinExist("ahk_id " targetHwnd))
     {
@@ -70,6 +79,17 @@ F1 & ESC:: ExitApp()
     }
 
     ; Cleanup global variables
+    CleanupRuntime()
+}
+
+; -----------------
+; === Functions ===
+; -----------------
+
+CleanupRuntime()
+{
+    global targetHwnd, targetHwndWidth, targetHwndHeight
+
     targetHwnd := 0
     targetHwndWidth := 0
     targetHwndHeight := 0
